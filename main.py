@@ -11,14 +11,14 @@ camera_x, camera_y, camera_z = 0, 0, -5
 camera_rot_x, camera_rot_y, camera_rot_z = 0, 0, 0
 
 
-#                                       X je levo desno
-vertices = (            # X Y Z              Y je gore dole
-    (0, -2, -2),         #0                 Z je pravac gledanja
+#
+vertices = (            # X Y Z
+    (0, -2, -2),         #0                
     (0, 0, -2),          #1
-    (-2, 0, -2),         #2             komande: komanda manipulise osu za koju nije vezana
+    (-2, 0, -2),         #2
     (-2, -2, -2),        #3                                     right = - y
     (0, -2, 0),          #4              ###                    left = + y
-    (0, 0, 0),           #5   osnovna      ###                  up   = + x
+    (0, 0, 0),           #5                ###                  up   = + x
     (-2, -2, 0),         #6                                     down = - x
     (-2, 0, 0)           #7
 )
@@ -79,7 +79,7 @@ def main():
 
         keys = pygame.key.get_pressed()
 
-        ################ ROTACIJA KAMERE
+        ################ ROTATION
 
         if keys[K_q]:
             camera_rot_y += 1
@@ -94,7 +94,7 @@ def main():
         if keys[K_d]:
             camera_rot_z += 1
 
-        ############### TRANSLACIJA KAMERE
+        ############### TRANSLATION
 
         if keys[K_r]:
             camera_y += 0.1
@@ -110,9 +110,8 @@ def main():
             camera_z -= 0.1
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-        glLoadIdentity()  # Load identity matrix before applying transformations
+        glLoadIdentity()
 
-        # Apply rotations and translations
         glTranslatef(camera_x, camera_y, camera_z)
 
         glRotatef(camera_rot_x, 1, 0, 0)
